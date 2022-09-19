@@ -2,26 +2,38 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ItemType {
-  id: ID!
-  title: String!
-  price: Int!
-  description: String!
+type ItemDef {
+  """Tells about id of user"""
+  _id: String
+
+  """tells about title of the item"""
+  title: String
+
+  """tells about price of the item"""
+  price: Float
+
+  """tells about description of the item"""
+  description: String
 }
 
 type Query {
-  items: [ItemType!]!
+  items: [ItemDef!]!
   hello: String!
 }
 
 type Mutation {
-  createItem(input: ItemInput!): ItemType!
-  updateItem(id: String!, input: ItemInput!): ItemType!
-  deleteItem(id: String!): ItemType!
+  createItem(inputs: ItemTypeDto!): ItemDef!
+  updateItem(id: String!, input: ItemTypeDto!): ItemDef!
+  deleteItem(id: String!): ItemDef!
 }
 
-input ItemInput {
-  title: String!
-  price: Int!
+input ItemTypeDto {
+  """Title of the item"""
+  title: String
+
+  """price of the item"""
+  price: Float
+
+  """price of the item"""
   description: String!
 }

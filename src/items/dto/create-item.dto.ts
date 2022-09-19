@@ -1,13 +1,15 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
+import { Field, Int, InputType } from '@nestjs/graphql';
+import { IsString } from 'class-validator';
 
-@ObjectType()
-export class ItemType {
-  @Field(() => ID)
-  readonly id?: string;
-  @Field()
+@InputType()
+export class ItemTypeDto {
+  @Field({ nullable: true, description: 'Title of the item' })
+  @IsString()
   readonly title: string;
-  @Field(() => Int)
+
+  @Field({ nullable: true, description: 'price of the item' })
   readonly price: number;
-  @Field()
+
+  @Field({ nullable: false, description: 'price of the item' })
   readonly description: string;
 }
