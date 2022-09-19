@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Users {
+  """enter user name"""
+  name: String
+
+  """Enter user age"""
+  age: String
+}
+
 type ItemDef {
   """Tells about id of user"""
   _id: String
@@ -14,6 +22,9 @@ type ItemDef {
 
   """tells about description of the item"""
   description: String
+
+  """here"""
+  user: Users
 }
 
 type Query {
@@ -36,4 +47,15 @@ input ItemTypeDto {
 
   """price of the item"""
   description: String!
+
+  """enter user value"""
+  user: User
+}
+
+input User {
+  """Enter details of user"""
+  name: String
+
+  """Enter details of user"""
+  age: String
 }

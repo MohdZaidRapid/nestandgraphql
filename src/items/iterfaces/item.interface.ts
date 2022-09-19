@@ -4,4 +4,10 @@ export interface Item extends Document {
   readonly title: string;
   readonly price: number;
   readonly description: string;
+  readonly user: User;
+}
+
+export interface User {
+  name: string;
+  age: string;
 }
