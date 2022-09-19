@@ -45,8 +45,8 @@ input ItemTypeDto {
   """price of the item"""
   price: Float
 
-  """price of the item"""
-  description: String!
+  """description of the item"""
+  description: String
 
   """enter user value"""
   user: User

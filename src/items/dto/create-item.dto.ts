@@ -1,5 +1,5 @@
-import { Field, Int, InputType } from '@nestjs/graphql';
-import { IsOptional, IsString } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
+import { IsOptional, IsString, IsInt } from 'class-validator';
 
 @InputType()
 export class User {
@@ -19,11 +19,14 @@ export class ItemTypeDto {
   readonly title: string;
 
   @Field({ nullable: true, description: 'price of the item' })
+  @IsInt()
   readonly price: number;
 
-  @Field({ nullable: false, description: 'price of the item' })
+  @Field({ nullable: true, description: 'description of the item' })
+  @IsString()
   readonly description: string;
 
-  @Field({ nullable: true, description: 'enter user value' })
+  @Field(() => User, { nullable: true, description: 'enter user value' })
+  @IsString()
   readonly user: User;
 }
