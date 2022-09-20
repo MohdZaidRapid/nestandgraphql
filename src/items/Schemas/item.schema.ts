@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { Item } from './iterfaces/item.interface';
+import { Item } from '../iterfaces/item.interface'
 
 export const ItemSchema = new mongoose.Schema<Item>({
   title: String,
@@ -14,5 +14,9 @@ export const ItemSchema = new mongoose.Schema<Item>({
       type: String,
       default: null,
     },
+  },
+  productTitle: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'product',
   },
 });

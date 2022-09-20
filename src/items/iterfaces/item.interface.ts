@@ -5,6 +5,7 @@ export interface Item extends Document {
   readonly price: number;
   readonly description: string;
   readonly user: User;
+  readonly productTitle: any;
 }
 
 export interface User {

@@ -10,6 +10,14 @@ type Users {
   age: String
 }
 
+type ProductDef {
+  """Tells about id of user"""
+  _id: String
+
+  """tells about title of the item"""
+  title: String
+}
+
 type ItemDef {
   """Tells about id of user"""
   _id: String
@@ -25,6 +33,9 @@ type ItemDef {
 
   """here"""
   user: Users
+
+  """product id"""
+  productTitle: ProductDef
 }
 
 type Query {
@@ -33,9 +44,15 @@ type Query {
 }
 
 type Mutation {
+  createPro(inpu: ProductDto!): ProductDef!
   createItem(inputs: ItemTypeDto!): ItemDef!
   updateItem(id: String!, input: ItemTypeDto!): ItemDef!
   deleteItem(id: String!): ItemDef!
+}
+
+input ProductDto {
+  """Title of the product"""
+  title: String
 }
 
 input ItemTypeDto {
@@ -50,6 +67,9 @@ input ItemTypeDto {
 
   """enter user value"""
   user: User
+
+  """enter Product ID"""
+  productTitle: String!
 }
 
 input User {

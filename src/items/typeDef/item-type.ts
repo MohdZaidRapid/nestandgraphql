@@ -13,6 +13,16 @@ export class Users {
 }
 
 @ObjectType()
+export class ProductDef {
+  @Field({ nullable: true, description: 'Tells about id of user' })
+  _id: string;
+
+  @Field({ nullable: true, description: 'tells about title of the item' })
+  @IsString()
+  readonly title: string;
+}
+
+@ObjectType()
 export class ItemDef {
   @Field({ nullable: true, description: 'Tells about id of user' })
   _id: string;
@@ -31,4 +41,7 @@ export class ItemDef {
 
   @Field({ nullable: true, description: 'here' })
   readonly user: Users;
+
+  @Field({ nullable: true, description: 'product id' })
+  readonly productTitle: ProductDef;
 }

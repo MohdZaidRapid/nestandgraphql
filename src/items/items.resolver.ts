@@ -1,13 +1,19 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ItemTypeDto } from './dto/create-item.dto';
 import { ItemsService } from './items.service';
-import { ItemDef } from './typeDef/item-type';
+import { ItemDef, ProductDef } from './typeDef/item-type';
 
 import { Item } from './iterfaces/item.interface';
+import { ProductDto } from './dto/product.dto';
 
-@Resolver((of) => ItemDef)
+@Resolver()
 export class ItemsResolver {
   constructor(private readonly itemsService: ItemsService) {}
+
+  @Mutation((returns) => ProductDef)
+  async createPro(@Args('inpu') productDto: ProductDto): Promise<ProductDef> {
+    return this.itemsService.createProduct(productDto);
+  }
 
   @Query((returns) => [ItemDef])
   async items(): Promise<ItemDef[]> {
