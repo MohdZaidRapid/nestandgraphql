@@ -12,6 +12,16 @@ export class User {
   readonly age: string;
 }
 
+// @InputType()
+// export class ProductDef {
+//   @Field({ nullable: true, description: 'Tells about id of user' })
+//   readonly _id: string;
+
+//   @Field({ nullable: true, description: 'tells about title of the item' })
+//   @IsString()
+//   readonly title: string;
+// }
+
 @InputType()
 export class ItemTypeDto {
   @Field({ nullable: true, description: 'Title of the item' })
@@ -30,8 +40,7 @@ export class ItemTypeDto {
   @IsString()
   readonly user: User;
 
-  @Field({ nullable: false, description: 'enter Product ID' })
+  @Field({ nullable: true, description: 'enter Product ID' })
   @IsString()
-  @IsNotEmpty()
   readonly productTitle: string;
 }

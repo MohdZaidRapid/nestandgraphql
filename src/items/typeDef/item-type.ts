@@ -1,5 +1,6 @@
 import { IsString, IsInt } from 'class-validator';
 import { Field, ObjectType } from '@nestjs/graphql';
+import { Optional } from '@nestjs/common';
 
 @ObjectType()
 export class Users {
@@ -15,7 +16,7 @@ export class Users {
 @ObjectType()
 export class ProductDef {
   @Field({ nullable: true, description: 'Tells about id of user' })
-  _id: string;
+  readonly _id: string;
 
   @Field({ nullable: true, description: 'tells about title of the item' })
   @IsString()
@@ -42,6 +43,7 @@ export class ItemDef {
   @Field({ nullable: true, description: 'here' })
   readonly user: Users;
 
-  @Field({ nullable: true, description: 'product id' })
+  @Field(() => ProductDef, { nullable: true, description: 'product id' })
+  @Optional()
   readonly productTitle: ProductDef;
 }

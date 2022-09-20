@@ -69,7 +69,7 @@ input ItemTypeDto {
   user: User
 
   """enter Product ID"""
-  productTitle: String!
+  productTitle: String
 }
 
 input User {
